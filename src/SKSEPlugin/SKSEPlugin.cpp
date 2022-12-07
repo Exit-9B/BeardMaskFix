@@ -1,3 +1,5 @@
+#include "Hooks/Biped.h"
+
 namespace
 {
 	void InitializeLog()
@@ -40,6 +42,8 @@ extern "C" DLLEXPORT constinit auto SKSEPlugin_Version = []()
 	v.AuthorName("Parapets"sv);
 
 	v.UsesAddressLibrary(true);
+	v.HasNoStructUse(true);
+	v.UsesStructsPost629(false);
 
 	return v;
 }();
@@ -73,6 +77,8 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_s
 	logger::info("{} v{}"sv, Plugin::NAME, Plugin::VERSION.string());
 
 	SKSE::Init(a_skse);
+	SKSE::AllocTrampoline(51);
+	Hooks::Biped::Install();
 
 	return true;
 }
