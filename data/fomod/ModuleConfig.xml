@@ -1,0 +1,92 @@
+<!-- Created with FOMOD Creation Tool 1.7.0.37 [http://www.nexusmods.com/fallout4/mods/6821] --> 
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd"> 
+	<moduleName>Beard Mask Fix</moduleName> 
+	<installSteps order="Explicit"> 
+		<installStep name="Game Version"> 
+			<optionalFileGroups order="Explicit"> 
+				<group name="Game Version" type="SelectExactlyOne"> 
+					<plugins order="Explicit"> 
+						<plugin name="Skyrim Special Edition"> 
+							<description>Choose this if you are playing Skyrim Special Edition.</description> 
+							<image path="fomod\images\skyrim_se.jpg" /> 
+							<conditionFlags> 
+								<flag name="SkyrimSE">On</flag> 
+							</conditionFlags> 
+							<files> 
+								<folder source="SkyrimSE\SKSE" destination="SKSE" priority="0" /> 
+							</files> 
+							<typeDescriptor> 
+								<type name="Optional"/> 
+							</typeDescriptor> 
+						</plugin> 
+						<plugin name="Skyrim VR"> 
+							<description>Choose this if you are playing Skyrim VR.</description> 
+							<image path="fomod\images\skyrim_vr.jpg" /> 
+							<conditionFlags> 
+								<flag name="SkyrimVR">On</flag> 
+							</conditionFlags> 
+							<files> 
+								<folder source="SkyrimVR\SKSE" destination="SKSE" priority="0" /> 
+							</files> 
+							<typeDescriptor> 
+								<dependencyType> 
+									<defaultType name="Optional"/> 
+									<patterns> 
+										<pattern> 
+											<dependencies operator="And"> 
+												<fileDependency file="SkyrimVR.esm" state="Active"/> 
+											</dependencies> 
+											<type name="Recommended"/> 
+										</pattern> 
+									</patterns> 
+								</dependencyType> 
+							</typeDescriptor> 
+						</plugin> 
+					</plugins> 
+				</group> 
+			</optionalFileGroups> 
+		</installStep> 
+		<installStep name="Extras"> 
+			<optionalFileGroups order="Explicit"> 
+				<group name="Select Addons" type="SelectAny"> 
+					<plugins order="Explicit"> 
+						<plugin name="Vanilla Masks"> 
+							<description>Adds the missing mask to the male and beast-race versions of the Shrouded Cowl.</description> 
+							<conditionFlags> 
+								<flag name="InstallData">On</flag> 
+							</conditionFlags> 
+							<files> 
+								<folder source="Meshes" destination="Meshes" priority="0" /> 
+							</files> 
+							<typeDescriptor> 
+								<type name="Recommended"/> 
+							</typeDescriptor> 
+						</plugin> 
+					</plugins> 
+				</group> 
+			</optionalFileGroups> 
+		</installStep> 
+	</installSteps> 
+	<conditionalFileInstalls> 
+		<patterns> 
+			<pattern> 
+				<dependencies operator="And"> 
+					<flagDependency flag="SkyrimSE" value="On"/> 
+					<flagDependency flag="InstallData" value="On"/> 
+				</dependencies> 
+				<files> 
+					<file source="SkyrimSE\BeardMaskFix.esp" destination="BeardMaskFix.esp" priority="0" /> 
+				</files> 
+			</pattern> 
+			<pattern> 
+				<dependencies operator="And"> 
+					<flagDependency flag="SkyrimVR" value="On"/> 
+					<flagDependency flag="InstallData" value="On"/> 
+				</dependencies> 
+				<files> 
+					<file source="SkyrimVR\BeardMaskFix.esp" destination="BeardMaskFix.esp" priority="0" /> 
+				</files> 
+			</pattern> 
+		</patterns> 
+	</conditionalFileInstalls> 
+</config>

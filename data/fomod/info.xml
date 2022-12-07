@@ -1,0 +1,9 @@
+<fomod> 
+	<Name>Beard Mask Fix</Name> 
+	<Author>Parapets</Author> 
+	<Website>https://www.nexusmods.com/skyrimspecialedition/mods/80232</Website> 
+	<Description>Hides facial hair when wearing items using slot 44.</Description> 
+	<Groups>
+		<element>Bug Fixes</element>
+	</Groups> 
+</fomod> 
